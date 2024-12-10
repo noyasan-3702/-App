@@ -11,7 +11,7 @@ function Foam() {
         メールアドレス: "",
         問い合わせ内容: "",
         その他: "",
-      });
+    });
     
     // フィールドごとのエラーメッセージを管理
     const [errors, setErrors] = useState({}); 
@@ -21,7 +21,14 @@ function Foam() {
 
     // ポップアップの横幅を管理
     const [popupWidth, setPopupWidth] = useState("auto");
-    
+
+    // ポップアップの横幅の上限を設定
+    const MAX_WIDTH = 600; 
+
+    // ポップアップの横幅の最小値を設定
+    const MIN_WIDTH = 300; 
+
+
     // 更新の処理
     const handleChange = (e) => {
 
@@ -45,6 +52,7 @@ function Foam() {
         });
     };
 
+
     // 確認の処理
     const handleConfirm = () => {
 
@@ -64,8 +72,10 @@ function Foam() {
         }
       };
     
+
     // 送信の処理
     const handleSend = () => {
+
         // アラートとコンソールに表示
         alert("送信完了しました！", formData);
         console.log("フォーム内容:", formData);
@@ -83,14 +93,13 @@ function Foam() {
         setIsPopupVisible(false);
     };
 
+    
     // ポップアップを閉じる
     const closePopup = () => {
         setIsPopupVisible(false);
     };
 
     // ポップアップの横幅を動的に設定
-    const MAX_WIDTH = 600; // ポップアップの横幅の上限を設定
-    const MIN_WIDTH = 300; // ポップアップの横幅の最小値を設定
     useEffect(() => {
         if (isPopupVisible) {
             // 全ての入力値を連結して、その長さに基づいて横幅を決定
